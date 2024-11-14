@@ -1,9 +1,9 @@
 'use client'
-import { Button } from '@/components/ui/button'
 import { UserButton, useUser } from '@clerk/nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { Button } from '../../components/ui/button'
 
 function Header() {
   const { user, isSignedIn } = useUser();

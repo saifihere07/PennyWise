@@ -9,7 +9,6 @@ function BudgetItem({ budget }) {
 
         return perc.toFixed(2);
     }
-    console.log(budget)
 
     return (
         <Link href={'/dashboard/expenses/' + budget?.id} >

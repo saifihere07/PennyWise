@@ -9,38 +9,39 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/dialog"
+} from "../../../../../components/ui/dialog"
 import EmojiPicker from 'emoji-picker-react'
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { db } from '@/utils/dbConfig';
-import { Budgets } from '@/utils/schema';
+import { Button } from '../../../../../components/ui/button';
+import { Input } from '../../../../../components/ui/input';
+import { db } from '../../../../../utils/dbConfig';
+import { Budgets } from '../../../../../utils/schema';
 import { useUser } from '@clerk/nextjs';
 import { toast } from 'sonner';
 
 
-function CreateBudget({refreshData}) {
+function CreateBudget() {
     const [emojiIcon, setEmojiIcon] = useState('😊');
     const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
     const [name, setName] = useState();
     const [amount, setAmount] = useState();
+
     const { user } = useUser();
 
-
     // Use to Create New Budget
-
+    console.log(user)
     const onCreateBudget = async () => {
+
         const result = await db.insert(Budgets)
             .values({
                 name: name,
                 amount: amount,
+                user_id: user?.id,
                 createdBy: user?.primaryEmailAddress?.emailAddress,
                 icon: emojiIcon
             }).returning({ insertedId: Budgets.id })
 
         if (result) {
 
-            refreshData()
 
             toast('New Budget Created!')
         }
@@ -84,6 +85,7 @@ function CreateBudget({refreshData}) {
                                         onChange={(e) => setAmount(e.target.value)}
                                     />
                                 </div>
+
 
                             </div>
                         </DialogDescription>

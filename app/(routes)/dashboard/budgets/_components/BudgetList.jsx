@@ -1,45 +1,31 @@
-'use client'
-import React, { useEffect, useState } from 'react'
-import CreateBudget from './CreateBudget'
-import { db } from '@/utils/dbConfig'
-import { getTableColumns, sql, eq, desc } from 'drizzle-orm'
-import { Budgets, Expenses } from '@/utils/schema'
-import { useUser } from '@clerk/nextjs'
+
+
+import CreateBudget from './CreateBudget';
+import { getTableColumns, sql, eq, desc } from 'drizzle-orm';
+import { Budgets, Expenses } from '../../../../../utils/schema';
+import { auth } from '@clerk/nextjs/server';
+
+
 import BudgetItem from './BudgetItem'
+import { db } from '../../../../../utils/dbConfig';
 
-function BudgetList() {
+async function BudgetList() {
+  const { userId } = await auth()
 
-  const [budgetList, setBudgetList] = useState([]);
-
-  const { user } = useUser();
-  useEffect(() => {
-    user && getBudgetList();
- 
-  }, [user])
-
-
-  //Use to Get Budget List
-  const getBudgetList = async () => {
-    const result = await db.select({
-      ...getTableColumns(Budgets),
-      totalSpend: sql`sum(${Expenses.amount})`.mapWith(Number),
-      totalItem: sql`count(${Expenses.id})`.mapWith(Number)
-    }).from(Budgets)
-      .leftJoin(Expenses, eq(Budgets.id, Expenses.budgetId))
-      .where(eq(Budgets.createdBy, user?.primaryEmailAddress?.emailAddress))
-      .groupBy(Budgets.id)
-      .orderBy(desc(Budgets.id))
-    setBudgetList(result);
-    console.log(budgetList)
-
-
-
-  }
+  const budgetList = await db.select({
+    ...getTableColumns(Budgets),
+    totalSpend: sql`sum(${Expenses.amount})`.mapWith(Number),
+    totalItem: sql`count(${Expenses.id})`.mapWith(Number)
+  }).from(Budgets)
+    .leftJoin(Expenses, eq(Budgets.id, Expenses.budgetId))
+    .where(eq(Budgets.user_id, userId))
+    .groupBy(Budgets.id)
+    .orderBy(desc(Budgets.id))
 
   return (
     <div className='mt-7'>
       <div className='grid grid-cols-1 md:grid-cols-1  lg:grid-cols-3 gap-5'>
-        <CreateBudget refreshData={() => getBudgetList()} />
+        <CreateBudget />
         {budgetList?.length > 0 ? budgetList.map((budget, index) => (
           <BudgetItem key={index} budget={budget} />
         ))

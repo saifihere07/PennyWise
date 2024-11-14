@@ -1,23 +1,8 @@
-import { db } from '@/utils/dbConfig'
-import { Expenses } from '@/utils/schema'
-import { eq } from 'drizzle-orm'
-import { Trash } from 'lucide-react'
 import React from 'react'
-import { toast } from 'sonner'
+import DeleteExpenseButton from './DeleteExpenseButton'
 
-function ExpensesListTable({ expensesList, refreshData }) {
+async function ExpensesListTable({ expensesList, }) {
 
-    const deleteExpense = async (expense) => {
-        const result = await db.delete(Expenses)
-            .where(eq(Expenses.id, expense.id))
-            .returning()
-
-
-        if (result)
-
-            toast('Expense Deleted!')
-        refreshData();
-    }
 
     return (
         <div className='mt-5 '>
@@ -34,9 +19,9 @@ function ExpensesListTable({ expensesList, refreshData }) {
                         <h2 className='flex'>{expenses.name}</h2>
                         <h2 className='flex'>{expenses.amount}</h2>
                         <h2 className='flex'>{expenses.createdAt}</h2>
-                        <h2><Trash
-                            onClick={() => deleteExpense(expenses)}
-                            className='text-slate-500 hover:text-red-600 hover:animate-bounce cursor-pointer max-sm:ml-6 md:ml-8' /></h2>
+                        <h2>
+                            <DeleteExpenseButton expenses={expenses} />
+                        </h2>
                     </div>
                 ))}
             </div>

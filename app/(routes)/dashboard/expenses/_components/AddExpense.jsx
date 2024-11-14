@@ -1,8 +1,8 @@
 'use client'
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input'
-import { db } from '@/utils/dbConfig';
-import { Budgets, Expenses } from '@/utils/schema';
+import { Button } from '../../../../../components/ui/button';
+import { Input } from '../../../../../components/ui/input'
+import { db } from '../../../../../utils/dbConfig';
+import { Budgets, Expenses } from '../../../../../utils/schema';
 import { Loader } from 'lucide-react';
 import moment from 'moment/moment';
 import React, { useState } from 'react'
@@ -13,6 +13,7 @@ function AddExpense({ budgetId, user, refreshData }) {
   const [name, setName] = useState();
   const [amount, setAmount] = useState();
   const [loading, setLoading] = useState(false);
+  console.log(user)
 
   //use to add expense
   const AddNewExpense = async () => {
@@ -21,6 +22,7 @@ function AddExpense({ budgetId, user, refreshData }) {
       name: name,
       amount: amount,
       budgetId: budgetId,
+      user_id:user?.userId,
       createdAt: moment().format('DD/MM/YYYY')
     }).returning({ insertedId: Budgets.id })
 
@@ -29,7 +31,7 @@ function AddExpense({ budgetId, user, refreshData }) {
     setName('');
     if (result) {
       setLoading(false)
-      refreshData();
+    
       toast('New Expense Added!')
     }
     setLoading(false)

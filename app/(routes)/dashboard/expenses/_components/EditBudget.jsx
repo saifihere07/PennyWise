@@ -1,5 +1,5 @@
 'use client'
-import { Button } from '@/components/ui/button'
+import { Button } from '../../../../../components/ui/button'
 import { PenBox } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 //dialogue imports
@@ -12,12 +12,12 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/dialog"
+} from "../../../../../components/ui/dialog"
 import EmojiPicker from 'emoji-picker-react'
-import { Input } from '@/components/ui/input'
+import { Input } from '../../../../../components/ui/input'
 import { useUser } from '@clerk/nextjs'
-import { db } from '@/utils/dbConfig'
-import { Budgets } from '@/utils/schema'
+import { db } from '../../../../../utils/dbConfig'
+import { Budgets } from '../../../../../utils/schema'
 import { toast } from 'sonner'
 import { eq } from 'drizzle-orm'
 
@@ -51,7 +51,7 @@ function EditBudget({ budgetInfo, refreshData }) {
 
         if (result) {
 
-            refreshData();
+        
             toast('Budget Updated!')
         }
     }

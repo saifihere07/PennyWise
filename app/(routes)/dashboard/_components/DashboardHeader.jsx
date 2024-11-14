@@ -9,7 +9,7 @@ function DashboardHeader() {
             <div className=''>
         
             </div>
-            <div></div>
+           
             
             <div className='flex items-center gap-2 '>
                 {user?.fullName || user?.username || 'Guest'}
