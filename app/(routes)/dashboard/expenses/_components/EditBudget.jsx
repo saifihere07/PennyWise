@@ -20,11 +20,12 @@ import { db } from '../../../../../utils/dbConfig'
 import { Budgets } from '../../../../../utils/schema'
 import { toast } from 'sonner'
 import { eq } from 'drizzle-orm'
+import { useRouter } from 'next/navigation'
 
 function EditBudget({ budgetInfo, refreshData }) {
     const [emojiIcon, setEmojiIcon] = useState(budgetInfo?.icon);
     const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
-   
+    const router = useRouter();
     const [name, setName] = useState();
     const [amount, setAmount] = useState();
     const { user } = useUser();
@@ -39,9 +40,14 @@ function EditBudget({ budgetInfo, refreshData }) {
 
     }, [budgetInfo])
 
-    console.log(budgetInfo)
-
     const onUpdateBudget = async () => {
+
+        console.log('spent',budgetInfo?.totalSpend)
+        if (amount < budgetInfo?.totalSpend) {
+            toast.error(`Please enter your budget less than : ${budgetInfo?.totalSpend}`)
+            return
+        }
+
         const result = await db.update(Budgets).set({
             name: name,
             amount: amount,
@@ -49,10 +55,10 @@ function EditBudget({ budgetInfo, refreshData }) {
         }).where(eq(Budgets.id, budgetInfo.id))
             .returning();
 
-        if (result) {
 
-        
+        if (result) {
             toast('Budget Updated!')
+            router.refresh()
         }
     }
 
