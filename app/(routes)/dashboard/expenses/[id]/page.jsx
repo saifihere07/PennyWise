@@ -68,7 +68,7 @@ async function ExpensesScreen({ params }) {
         /> :
           <div className='h-[150px] w-full bg-slate-200 rounded-lg animate-pulse'>
           </div>}
-        <AddExpense
+        <AddExpense budgetInfo={budgetInfo}
           user={userInfo} budgetId={params.id}
         />
       </div>

@@ -15,21 +15,19 @@ import {
 } from "../../../../../components/ui/dialog"
 import EmojiPicker from 'emoji-picker-react'
 import { Input } from '../../../../../components/ui/input'
-import { useUser } from '@clerk/nextjs'
 import { db } from '../../../../../utils/dbConfig'
 import { Budgets } from '../../../../../utils/schema'
 import { toast } from 'sonner'
 import { eq } from 'drizzle-orm'
 import { useRouter } from 'next/navigation'
 
-function EditBudget({ budgetInfo, refreshData }) {
+function EditBudget({ budgetInfo }) {
     const [emojiIcon, setEmojiIcon] = useState(budgetInfo?.icon);
     const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
     const router = useRouter();
     const [name, setName] = useState();
     const [amount, setAmount] = useState();
-    const { user } = useUser();
-
+ 
 
     useEffect(() => {
         if (budgetInfo) {
@@ -44,7 +42,7 @@ function EditBudget({ budgetInfo, refreshData }) {
 
         console.log('spent',budgetInfo?.totalSpend)
         if (amount < budgetInfo?.totalSpend) {
-            toast.error(`Please enter your budget less than : ${budgetInfo?.totalSpend}`)
+            toast.error(`Please enter your budget greater than : ${budgetInfo?.totalSpend}`)
             return
         }
 

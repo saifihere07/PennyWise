@@ -1,6 +1,5 @@
 "use server";
 
-import { toast } from "sonner";
 import { revalidatePath } from "next/cache";
 import { eq } from "drizzle-orm";
 import { db } from "../../../../utils/dbConfig";

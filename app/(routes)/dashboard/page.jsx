@@ -11,6 +11,7 @@ import { Budgets, Expenses } from '../../../utils/schema';
 async function Dashboard() {
   const { userId } = await auth()
 
+
   const budgetList = await db.select({
     ...getTableColumns(Budgets),
     totalSpend: sql`sum(${Expenses.amount})`.mapWith(Number),
@@ -38,7 +39,7 @@ async function Dashboard() {
 
   return (
     <div className='p-8 md:flex md:flex-col'>
-      {/* <h2 className='text-3xl font-bold'> Hi, {user?.fullName}!</h2> */}
+      <h2 className='text-3xl font-bold'> Hi!</h2>
       <p className='text-gray-500 mt-1'>Here&apos;s what&apos;s happening with your Money, Let&apos;s manage your Expenses! </p>
 
 

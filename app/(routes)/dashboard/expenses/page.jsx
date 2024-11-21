@@ -9,6 +9,8 @@ async function ExpensesList() {
 
   const { userId } = await auth()
 
+
+
   const expensesList = await db.select({
     id: Expenses.id,
     name: Expenses.name,

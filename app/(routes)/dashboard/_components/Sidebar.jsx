@@ -4,14 +4,11 @@ import { LayoutGrid, PiggyBank, ReceiptText, ShieldCheck } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React, { useEffect } from 'react'
 
 function Sidebar() {
     const { user } = useUser();
     const path = usePathname();
-    useEffect(() => {
-        console.log(path)
-    }, [path])
+
     const menuList = [
         {
             id: 1,
@@ -52,8 +49,8 @@ function Sidebar() {
                 {menuList.map((menu, index) => (
                     <Link href={menu.path} key={index}>
                         <h2 className={`flex gap-2 items-center font-medium mb-2 text-gray-500
-            p-5 cursor-pointer rounded-md hover:text-primary hover:bg-blue-100
-                 ${path === menu.path && 'text-primary bg-blue-100'}  `} key={index}>
+                          p-5 cursor-pointer rounded-md hover:text-primary hover:bg-blue-100
+                           ${path === menu.path && 'text-primary bg-blue-100'}`} key={index}>
                             <menu.icon />
                             {menu.name}
                         </h2>

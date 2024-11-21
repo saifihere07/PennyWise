@@ -15,32 +15,15 @@ import {
 import { Button } from '../../../../../components/ui/button';
 import { Trash } from 'lucide-react';
 import { toast } from 'sonner';
-import { db } from '../../../../../utils/dbConfig';
-import { Budgets, Expenses } from '../../../../../utils/schema';
-import { eq } from 'drizzle-orm';
-
-
-
-function Alert({ params}) {
-
-    const deleteBudget = async () => {
-       
-
-        const deleteExpenseResult = await db.delete(Expenses)
-            .where(eq(Expenses.budgetId, params.id))
-            .returning()
-
-        if (deleteExpenseResult) {
-            const result = await db.delete(Budgets)
-                .where(eq(Budgets.id, params.id))
-                .returning();
-        }
-        toast('Budget Deleted!')
+import { useRouter } from 'next/navigation';
+import {deleteBudget} from './DeleteBudgetAction'
 
 
 
 
-    }
+function Alert({ params }) {
+    const router = useRouter()
+    const route = useRouter()
     return (
         <div className=''>
             <AlertDialog>
@@ -59,7 +42,18 @@ function Alert({ params}) {
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction onClick={() => deleteBudget()}>Continue</AlertDialogAction>
+                        <AlertDialogAction onClick={async () => {
+                            const result = await deleteBudget({params})
+
+                            if (!result) {
+                                toast('Budget could not be deleted please try again.')
+                                return
+                            }
+                            route.replace('/dashboard/budgets')
+                            router.refresh()
+                            toast('Budget Deleted')
+                        }
+                        }>Continue</AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>

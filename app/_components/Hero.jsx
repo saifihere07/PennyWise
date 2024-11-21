@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link';
 import React from 'react'
 import {ContainerScroll} from '../../components/ui/container-scroll-animation'
+import { Button } from '../../components/ui/button';
 function Hero() {
 
   return (
@@ -10,12 +11,16 @@ function Hero() {
         <ContainerScroll
           titleComponent={
             <>
-              <h1 className="text-4xl font-semibold text-black dark:text-white">
+             <div className=' -mt-[400px] max-sm:-mt-[250px]'>
+             <h1 className="text-4xl font-semibold text-black dark:text-white  ">
                 Manage Your Expenses with <br />
-                <span className="text-4xl md:text-[6rem] text-primary font-bold mt-1 leading-none">
+                <span className="text-4xl md:text-[6rem] text-primary font-bold  leading-none mt-1">
                   PennyWise
                 </span>
               </h1>
+              <Link href={'/dashboard'} ><Button className='mt-3 w-[200px]'>Dashboard</Button>
+              </Link>
+             </div>
             </>
           }
         >

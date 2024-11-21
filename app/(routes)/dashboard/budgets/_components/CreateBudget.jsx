@@ -17,6 +17,7 @@ import { db } from '../../../../../utils/dbConfig';
 import { Budgets } from '../../../../../utils/schema';
 import { useUser } from '@clerk/nextjs';
 import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 
 function CreateBudget() {
@@ -24,6 +25,7 @@ function CreateBudget() {
     const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
     const [name, setName] = useState();
     const [amount, setAmount] = useState();
+    const router = useRouter();
 
     const { user } = useUser();
 
@@ -42,7 +44,7 @@ function CreateBudget() {
 
         if (result) {
 
-
+          router.refresh()
             toast('New Budget Created!')
         }
     }
