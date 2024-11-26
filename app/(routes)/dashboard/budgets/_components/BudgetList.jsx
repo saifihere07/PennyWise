@@ -7,7 +7,7 @@ import { auth } from '@clerk/nextjs/server';
 
 
 import BudgetItem from './BudgetItem'
-import { db } from '../../../../../utils/dbConfig';
+import { db } from '../../../../../utils/index';
 
 async function BudgetList() {
   const { userId } = await auth()

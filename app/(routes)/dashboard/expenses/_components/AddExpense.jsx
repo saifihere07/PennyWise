@@ -1,6 +1,6 @@
 'use client'
 import { Button } from '../../../../../components/ui/button';
-import { db } from '../../../../../utils/dbConfig';
+import { db } from '../../../../../utils';
 import { Budgets, Expenses } from '../../../../../utils/schema';
 import moment from 'moment/moment';
 import { Input } from '../../../../../components/ui/input';
@@ -11,16 +11,14 @@ import { toast } from 'sonner';
 function AddExpense({ budgetId, user, budgetInfo }) {
   const router = useRouter(); 
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
-  console.log('budgetinfo:', budgetInfo);
 
   const AddNewExpense = async (data) => {
     const { name, amount } = data;
-
   
-    // if (amount > budgetInfo?.[0].remainingAmount) {
-    //   toast.error(`Please add an expense smaller than: ${budgetInfo?.[0].remainingAmount}`);
-    //   return;
-    // }
+    if (amount > budgetInfo[0]?.amount - budgetInfo[0]?.totalSpend) {
+      toast.error(`Please add an expense smaller than: ${budgetInfo[0]?.amount - budgetInfo[0]?.totalSpend}`);
+      return;
+    }
    
     try {
       const result = await db.insert(Expenses).values({
