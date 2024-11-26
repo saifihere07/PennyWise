@@ -6,6 +6,7 @@ import ExpensesListTable from './expenses/_components/ExpensesListTable';
 import { auth } from '@clerk/nextjs/server';
 import { db } from '../../../utils/dbConfig';
 import { Budgets, Expenses } from '../../../utils/schema';
+import Greetings from './_components/Greetings'
 
 
 async function Dashboard() {
@@ -39,8 +40,8 @@ async function Dashboard() {
 
   return (
     <div className='p-8 md:flex md:flex-col'>
-      <h2 className='text-3xl font-bold'> Hi!</h2>
-      <p className='text-gray-500 mt-1'>Here&apos;s what&apos;s happening with your Money, Let&apos;s manage your Expenses! </p>
+      <Greetings budgetList={budgetList}/>
+     {budgetList?.length === 0 ?  <p>Create a Budget First to analyze! </p> : <p className='text-gray-500 mt-1'>Here&apos;s what&apos;s happening with your Money, Let&apos;s manage your Expenses! </p>}
 
 
       {/* 3 Cards for Dashboard along with skeleton effect */}
@@ -48,9 +49,9 @@ async function Dashboard() {
       {budgetList.length > 0 ? <CardInfo budgetList={budgetList} />
         :
         <div className='mt-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 '>
-          <div className='h-[110px] w-[325px] md:w-[230px] bg-slate-200 animate-pulse rounded-md'></div>
-          <div className='h-[110px] w-[325px] md:w-[230px] bg-slate-200 animate-pulse rounded-md'></div>
-          <div className='h-[110px] w-[325px] md:w-[230px] bg-slate-200 animate-pulse rounded-md'></div>
+          <div className='h-[110px] w-[325px] md:w-[325px] bg-slate-200  rounded-md'></div>
+          <div className='h-[110px] w-[325px] md:w-[325px] bg-slate-200  rounded-md'></div>
+          <div className='h-[110px] w-[325px] md:w-[325px] bg-slate-200  rounded-md'></div>
         </div>}
 
 
@@ -69,14 +70,12 @@ async function Dashboard() {
             {expensesList?.length > 0 ? <ExpensesListTable
               expensesList={expensesList}
             /> :
-              <div className='flex flex-col gap-8 ml-3 mt-10'>
-                <div className='h-[30px] w-[200px] max-sm:w-[150px] max-lg:w-[200px] max-xl:w-[200px] bg-slate-200 rounded-md  animate-pulse' ></div>
-                <div className='h-[30px] w-[650px] max-sm:w-[300px] md:w-[600px] max-lg:w-[800px] max-xl:w-[900px] bg-slate-200 rounded-md  animate-pulse' ></div>
-                <div className='h-[30px] w-[650px] max-sm:w-[300px] md:w-[600px] max-lg:w-[800px] max-xl:w-[900px] bg-slate-200  rounded-md animate-pulse' ></div>
-                <div className='h-[30px] w-[650px] max-sm:w-[300px] md:w-[600px] max-lg:w-[800px] max-xl:w-[900px] bg-slate-200 rounded-md animate-pulse' ></div>
-                <div className='h-[30px] w-[650px] max-sm:w-[300px] md:w-[600px] max-lg:w-[800px] max-xl:w-[900px] bg-slate-200 rounded-md animate-pulse' ></div>
-
-              </div>}
+              <div className='pt-8 '>
+              <h2 className='font-bold text-xl'>Expenses</h2>
+              <div className='w-full bg-slate-200 h-[200px] rounded-lg mt-3  '>
+              <p className='text-md p-5'>Please add an Expense to see it here!</p>
+              </div>
+               </div>}
           </div>
         </div>
 
@@ -88,9 +87,9 @@ async function Dashboard() {
           {budgetList?.length > 0 ? budgetList.map((budget, index) => (
             <BudgetItem budget={budget} key={index} />
           )) : <div className='flex flex-col gap-5' >
-            <div className='w-full bg-slate-200 h-[150px] rounded-lg animate-pulse'></div>
-            <div className='w-full bg-slate-200 h-[150px] rounded-lg animate-pulse'></div>
-            <div className='w-full bg-slate-200 h-[150px] rounded-lg animate-pulse'></div>
+            <div className='w-full bg-slate-200 h-[150px] rounded-lg '></div>
+            <div className='w-full bg-slate-200 h-[150px] rounded-lg '></div>
+            <div className='w-full bg-slate-200 h-[150px] rounded-lg '></div>
           </div>}
         </div>
       </div>

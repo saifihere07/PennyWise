@@ -11,7 +11,7 @@ export default function Page() {
                         alt="placeholder"
                         width={1000}
                         height={1000}
-                        src="/bg.png"
+                        src="/bg.webp"
                         className="absolute inset-0 h-full w-full object-cover opacity-30"
                     />
 
@@ -65,12 +65,12 @@ export default function Page() {
                             </a>
 
                             <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-                                Welcome to Squid 🦑
+                            Welcome to PennyWise
                             </h1>
 
-                            <p className="mt-4 leading-relaxed text-gray-500">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
-                                quibusdam aperiam voluptatum.
+                            <p className="mt-4 mb-2 leading-relaxed text-gray-500">
+                            Your go-to budget tracker for managing expenses and gaining financial insights. Make smarter money decisions with ease!
+
                             </p>
                         </div>
                         <SignIn />

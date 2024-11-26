@@ -16,8 +16,8 @@ function DashboardHeader() {
            
             
             <div className='flex items-center gap-2 '>
-                {user?.fullName || user?.username || 'Guest'}
-                <UserButton />
+              
+                <UserButton showName/>
             </div>
         </div>
     )

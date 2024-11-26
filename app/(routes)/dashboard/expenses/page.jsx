@@ -27,20 +27,12 @@ async function ExpensesList() {
     <div className='p-10'>
       <h1 className=' text-3xl font-extrabold '> My Expenses</h1>
       <div className='-mt-5'>
-        {expensesList?.length > 0 ? <ExpensesListTable
+      {expensesList?.length > 0 ? <ExpensesListTable
           expensesList={expensesList}
           
-        /> :
-          <div className='flex flex-col mt-10 gap-5'>
-            <div className='h-[30px] w-[280px]  max-sm:w-[150px] md:w-[200px] lg:w-[280px] xl:w-[280px]  2xl:w-[500px] bg-slate-200 rounded-md animate-pulse' ></div>
-            <div className='h-[50px] w-[1000px] max-sm:w-[300px] md:w-[400px] lg:w-[650px] xl:w-[1000px] 2xl:w-[2000px]  bg-slate-200 rounded-md animate-pulse' ></div>
-            <div className='h-[50px] w-[1000px] max-sm:w-[300px] md:w-[400px] lg:w-[650px] xl:w-[1000px] 2xl:w-[2000px] bg-slate-200 rounded-md animate-pulse' ></div>
-            <div className='h-[50px] w-[1000px] max-sm:w-[300px] md:w-[400px] lg:w-[650px] xl:w-[1000px] 2xl:w-[2000px] bg-slate-200 rounded-md animate-pulse' ></div>
-            <div className='h-[50px] w-[1000px] max-sm:w-[300px] md:w-[400px] lg:w-[650px] xl:w-[1000px] 2xl:w-[2000px] bg-slate-200 rounded-md animate-pulse' ></div>
-            <div className='h-[50px] w-[1000px] max-sm:w-[300px] md:w-[400px] lg:w-[650px] xl:w-[1000px] 2xl:w-[2000px] bg-slate-200 rounded-md animate-pulse' ></div>
-
-
-          </div>}
+        /> : <div className="h-[110px] w-[500px] max-sm:w-[300px] md:[200px] mt-10 border-[3px] rounded-2xl ml-2">
+              <h1 className='text-xl p-10 max-sm:p-5'>Please add an Expense to see it here!</h1>
+               </div>}
       </div>
     </div>
   )

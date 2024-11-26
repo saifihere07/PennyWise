@@ -28,7 +28,8 @@ async function ExpensesScreen({ params }) {
   const budgetInfo = await db.select({
     ...getTableColumns(Budgets),
     totalSpend: sql`sum(${Expenses.amount})`.mapWith(Number),
-    totalItem: sql`count(${Expenses.id})`.mapWith(Number)
+    totalItem: sql`count(${Expenses.id})`.mapWith(Number),
+    remainingAmount: sql`(${Budgets.amount} - sum(${Expenses.amount}))`.mapWith(Number)
   }).from(Budgets)
     .leftJoin(Expenses, eq(Budgets.id, Expenses.budgetId))
     .where(eq(Budgets.createdBy, user?.primaryEmailAddress?.emailAddress))
@@ -44,10 +45,6 @@ async function ExpensesScreen({ params }) {
     .where(eq(Expenses.budgetId, params.id))
     .orderBy(desc(Expenses.id))
 
-
-
-
-  // use to delete Budget
 
 
 

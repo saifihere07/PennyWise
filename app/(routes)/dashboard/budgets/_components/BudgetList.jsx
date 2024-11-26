@@ -26,14 +26,9 @@ async function BudgetList() {
     <div className='mt-7'>
       <div className='grid grid-cols-1 md:grid-cols-1  lg:grid-cols-3 gap-5'>
         <CreateBudget />
-        {budgetList?.length > 0 ? budgetList.map((budget, index) => (
+        { budgetList.map((budget, index) => (
           <BudgetItem key={index} budget={budget} />
         ))
-          : [0, 1, 2, 3, 4].map((item, index) => (
-            <div key={index} className='w-full bg-slate-200 h-[150px] rounded-lg animate-pulse'>
-
-            </div>
-          ))
         }
       </div>
     </div>

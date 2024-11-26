@@ -86,6 +86,8 @@ function EditBudget({ budgetInfo }) {
                                     <h2 className='text-black font-medium m-1'>Budget Name</h2>
                                     <Input placeHolder="e.g. Car"
                                         defaultValue={budgetInfo?.name}
+                                        type="text" pattern="[A-Za-z\s]"
+                                        title="Only letters and spaces are allowed"
                                         onChange={(e) => setName(e.target.value)}
                                     />
                                 </div>
