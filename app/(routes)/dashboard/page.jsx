@@ -4,7 +4,7 @@ import BarChartDashboard from './_components/BarChartDashboard';
 import BudgetItem from './budgets/_components/BudgetItem';
 import ExpensesListTable from './expenses/_components/ExpensesListTable';
 import { auth } from '@clerk/nextjs/server';
-import { db } from '../../../utils/dbConfig';
+import { db } from '../../../utils';
 import { Budgets, Expenses } from '../../../utils/schema';
 import Greetings from './_components/Greetings'
 
@@ -32,10 +32,6 @@ async function Dashboard() {
     .rightJoin(Expenses, eq(Budgets.id, Expenses.budgetId))
     .where(eq(Budgets.user_id, userId))
     .orderBy(desc(Expenses.id));
-
-
-  console.log('User', userId)
-
 
 
   return (

@@ -1,5 +1,5 @@
 
-import { db } from '../../../../../utils/dbConfig';
+import { db } from '../../../../../utils';
 import { Budgets, Expenses } from '../../../../../utils/schema'
 import { desc, eq, getTableColumns, sql } from 'drizzle-orm';
 import BudgetItem from '../../budgets/_components/BudgetItem';
@@ -29,24 +29,17 @@ async function ExpensesScreen({ params }) {
     ...getTableColumns(Budgets),
     totalSpend: sql`sum(${Expenses.amount})`.mapWith(Number),
     totalItem: sql`count(${Expenses.id})`.mapWith(Number),
-    remainingAmount: sql`(${Budgets.amount} - sum(${Expenses.amount}))`.mapWith(Number)
   }).from(Budgets)
     .leftJoin(Expenses, eq(Budgets.id, Expenses.budgetId))
     .where(eq(Budgets.createdBy, user?.primaryEmailAddress?.emailAddress))
     .where(eq(Budgets.id, params.id))
     .groupBy(Budgets.id)
 
-
-
-
   // use to get Latest Expenses List
 
   const expensesList = await db.select().from(Expenses)
     .where(eq(Expenses.budgetId, params.id))
     .orderBy(desc(Expenses.id))
-
-
-
 
   return (
     <div className='p-10'>

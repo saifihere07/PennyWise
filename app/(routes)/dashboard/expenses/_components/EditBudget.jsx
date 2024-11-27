@@ -15,7 +15,7 @@ import {
 } from "../../../../../components/ui/dialog"
 import EmojiPicker from 'emoji-picker-react'
 import { Input } from '../../../../../components/ui/input'
-import { db } from '../../../../../utils/dbConfig'
+import { db } from '../../../../../utils'
 import { Budgets } from '../../../../../utils/schema'
 import { toast } from 'sonner'
 import { eq } from 'drizzle-orm'
@@ -40,7 +40,6 @@ function EditBudget({ budgetInfo }) {
 
     const onUpdateBudget = async () => {
 
-        console.log('spent',budgetInfo?.totalSpend)
         if (amount < budgetInfo?.totalSpend) {
             toast.error(`Please enter your budget greater than : ${budgetInfo?.totalSpend}`)
             return

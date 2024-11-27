@@ -1,6 +1,6 @@
 
 import ExpensesListTable from './_components/ExpensesListTable'
-import { db } from '../../../../utils/dbConfig';
+import { db } from '../../../../utils/index';
 import { Budgets, Expenses } from '../../../../utils/schema';
 import { desc, eq } from 'drizzle-orm';
 import { auth } from '@clerk/nextjs/server';

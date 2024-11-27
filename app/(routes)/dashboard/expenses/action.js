@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { eq } from "drizzle-orm";
-import { db } from "../../../../utils/dbConfig";
+import { db } from "../../../../utils";
 import { Expenses } from "../../../../utils/schema";
 
 export const deleteExpense = async (expense) => {

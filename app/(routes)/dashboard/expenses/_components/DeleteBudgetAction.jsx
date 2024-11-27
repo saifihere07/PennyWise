@@ -1,6 +1,6 @@
 
 import { eq } from "drizzle-orm";
-import { db } from "../../../../../utils/dbConfig";
+import { db } from "../../../../../utils";
 import { Budgets, Expenses } from '../../../../../utils/schema';
 
 
