@@ -1,4 +1,3 @@
-import CardInfo from "./_components/cardInfo";
 import { desc, eq, getTableColumns, sql } from "drizzle-orm";
 import BarChartDashboard from "./_components/BarChartDashboard";
 import BudgetItem from "./budgets/_components/BudgetItem";
@@ -7,6 +6,7 @@ import { auth } from "@clerk/nextjs/server";
 import { db } from "../../../utils";
 import { Budgets, Expenses } from "../../../utils/schema";
 import Greetings from "./_components/Greetings";
+import CardInfo from './_components/CardInfo'
 
 async function Dashboard() {
   const { userId } = await auth();

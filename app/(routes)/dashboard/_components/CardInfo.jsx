@@ -1,6 +1,7 @@
-import { PiggyBank, Receipt, Wallet } from "lucide-react";
+import { PiggyBank, Receipt, Wallet } from 'lucide-react';
+import React from 'react'
 
-function CardInfo({ budgetList }) {
+const CardInfo = () => {
   let totalBudget = 0;
   let totalSpend = 0;
   budgetList.forEach((element) => {
@@ -37,4 +38,4 @@ function CardInfo({ budgetList }) {
   );
 }
 
-export default CardInfo;
+export default CardInfo
