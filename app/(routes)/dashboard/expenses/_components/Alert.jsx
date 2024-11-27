@@ -16,7 +16,7 @@ import { Button } from "../../../../../components/ui/button";
 import { Trash } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { deleteBudget } from "./DeleteBudgetAction";
+import { deleteBudget } from "../action";
 
 function Alert({ params }) {
   const router = useRouter();

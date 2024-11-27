@@ -7,6 +7,7 @@ import { Input } from "../../../../../components/ui/input";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { createExpense } from "../action";
 
 function AddExpense({ budgetId, user, budgetInfo }) {
   const router = useRouter();
@@ -28,17 +29,7 @@ function AddExpense({ budgetId, user, budgetInfo }) {
     }
 
     try {
-      const result = await db
-        .insert(Expenses)
-        .values({
-          name: name,
-          amount: amount,
-          budgetId: budgetId,
-          user_id: user?.userId,
-          createdAt: moment().format("DD/MM/YYYY"),
-        })
-        .returning({ insertedId: Budgets.id });
-
+      const result = await createExpense({name:name,amount:amount,budgetId:budgetId,userId:user?.userId})
       if (result) {
         router.refresh();
         toast("Expense Added!");

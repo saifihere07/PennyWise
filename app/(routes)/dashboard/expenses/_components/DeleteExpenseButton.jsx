@@ -2,8 +2,8 @@
 
 import React from "react";
 import { Trash } from "lucide-react";
-import { deleteExpense } from "../action";
 import { toast } from "sonner";
+import { deleteExpense } from "../action";
 
 const DeleteExpenseButton = ({ expenses }) => {
   return (

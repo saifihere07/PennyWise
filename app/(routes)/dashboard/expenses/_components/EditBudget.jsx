@@ -20,6 +20,7 @@ import { Budgets } from "../../../../../utils/schema";
 import { toast } from "sonner";
 import { eq } from "drizzle-orm";
 import { useRouter } from "next/navigation";
+import { updateBudget } from "../action";
 
 function EditBudget({ budgetInfo }) {
   const [emojiIcon, setEmojiIcon] = useState(budgetInfo?.icon);
@@ -44,15 +45,12 @@ function EditBudget({ budgetInfo }) {
       return;
     }
 
-    const result = await db
-      .update(Budgets)
-      .set({
-        name: name,
-        amount: amount,
-        icon: emojiIcon,
-      })
-      .where(eq(Budgets.id, budgetInfo.id))
-      .returning();
+    const result = await updateBudget({
+      name: name,
+      amount: amount,
+      icon: emojiIcon,
+      budgetId: budgetInfo.id
+    })
 
     if (result) {
       toast("Budget Updated!");
