@@ -10,11 +10,10 @@ export const deleteExpense = async (expense) => {
     .delete(Expenses)
     .where(eq(Expenses.id, expense.id))
     .returning();
-  
+
   revalidatePath("/dashboard");
 
   if (result) {
     return true;
   }
-
 };

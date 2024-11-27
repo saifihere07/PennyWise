@@ -1,120 +1,134 @@
-'use client'
-import { Button } from '../../../../../components/ui/button'
-import { PenBox } from 'lucide-react'
-import React, { useEffect, useState } from 'react'
+"use client";
+import { Button } from "../../../../../components/ui/button";
+import { PenBox } from "lucide-react";
+import React, { useEffect, useState } from "react";
 //dialogue imports
 import {
-    Dialog,
-    DialogClose,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "../../../../../components/ui/dialog"
-import EmojiPicker from 'emoji-picker-react'
-import { Input } from '../../../../../components/ui/input'
-import { db } from '../../../../../utils'
-import { Budgets } from '../../../../../utils/schema'
-import { toast } from 'sonner'
-import { eq } from 'drizzle-orm'
-import { useRouter } from 'next/navigation'
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../../../../../components/ui/dialog";
+import EmojiPicker from "emoji-picker-react";
+import { Input } from "../../../../../components/ui/input";
+import { db } from "../../../../../utils";
+import { Budgets } from "../../../../../utils/schema";
+import { toast } from "sonner";
+import { eq } from "drizzle-orm";
+import { useRouter } from "next/navigation";
 
 function EditBudget({ budgetInfo }) {
-    const [emojiIcon, setEmojiIcon] = useState(budgetInfo?.icon);
-    const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
-    const router = useRouter();
-    const [name, setName] = useState();
-    const [amount, setAmount] = useState();
- 
+  const [emojiIcon, setEmojiIcon] = useState(budgetInfo?.icon);
+  const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
+  const router = useRouter();
+  const [name, setName] = useState();
+  const [amount, setAmount] = useState();
 
-    useEffect(() => {
-        if (budgetInfo) {
-            setEmojiIcon(budgetInfo?.icon)
-            setName(budgetInfo?.name)
-            setAmount(budgetInfo?.amount)
-        }
+  useEffect(() => {
+    if (budgetInfo) {
+      setEmojiIcon(budgetInfo?.icon);
+      setName(budgetInfo?.name);
+      setAmount(budgetInfo?.amount);
+    }
+  }, [budgetInfo]);
 
-    }, [budgetInfo])
-
-    const onUpdateBudget = async () => {
-
-        if (amount < budgetInfo?.totalSpend) {
-            toast.error(`Please enter your budget greater than : ${budgetInfo?.totalSpend}`)
-            return
-        }
-
-        const result = await db.update(Budgets).set({
-            name: name,
-            amount: amount,
-            icon: emojiIcon
-        }).where(eq(Budgets.id, budgetInfo.id))
-            .returning();
-
-
-        if (result) {
-            toast('Budget Updated!')
-            router.refresh()
-        }
+  const onUpdateBudget = async () => {
+    if (amount < budgetInfo?.totalSpend) {
+      toast.error(
+        `Please enter your budget greater than : ${budgetInfo?.totalSpend}`,
+      );
+      return;
     }
 
-    return (
-        <div className='max-sm:ml-5'>
+    const result = await db
+      .update(Budgets)
+      .set({
+        name: name,
+        amount: amount,
+        icon: emojiIcon,
+      })
+      .where(eq(Budgets.id, budgetInfo.id))
+      .returning();
 
-            <Dialog>
-                <DialogTrigger asChild>
-                    <Button className="flex gap-2"> <PenBox /> Edit</Button>
-                </DialogTrigger>
-                <DialogContent>
-                    <DialogHeader>
-                        <DialogTitle>Update Budget</DialogTitle>
-                        <DialogDescription>
-                            <div className='mt-5'>
-                                <Button className="text-lg" variant="outline" onClick={() => setOpenEmojiPicker(!openEmojiPicker)}>{emojiIcon}</Button>
-                                <div className='absolute z-20'>
-                                    <EmojiPicker
-                                        open={openEmojiPicker}
-                                        onEmojiClick={(e) => {
-                                            setEmojiIcon(e.emoji)
-                                            setOpenEmojiPicker(false)
-                                        }}
-                                    />
-                                </div>
-                                <div className='mt-2'>
-                                    <h2 className='text-black font-medium m-1'>Budget Name</h2>
-                                    <Input placeHolder="e.g. Car"
-                                        defaultValue={budgetInfo?.name}
-                                        type="text" pattern="[A-Za-z\s]"
-                                        title="Only letters and spaces are allowed"
-                                        onChange={(e) => setName(e.target.value)}
-                                    />
-                                </div>
+    if (result) {
+      toast("Budget Updated!");
+      router.refresh();
+    }
+  };
 
-                                <div className='mt-2'>
-                                    <h2 className='text-black font-medium m-1'>Budget Amount</h2>
-                                    <Input defaultValue={budgetInfo?.amount}
-                                        type="number" placeHolder="e.g. 5000$"
-                                        onChange={(e) => setAmount(e.target.value)}
-                                    />
-                                </div>
+  return (
+    <div className="max-sm:ml-5">
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button className="flex gap-2">
+            {" "}
+            <PenBox /> Edit
+          </Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Update Budget</DialogTitle>
+            <DialogDescription>
+              <div className="mt-5">
+                <Button
+                  className="text-lg"
+                  variant="outline"
+                  onClick={() => setOpenEmojiPicker(!openEmojiPicker)}
+                >
+                  {emojiIcon}
+                </Button>
+                <div className="absolute z-20">
+                  <EmojiPicker
+                    open={openEmojiPicker}
+                    onEmojiClick={(e) => {
+                      setEmojiIcon(e.emoji);
+                      setOpenEmojiPicker(false);
+                    }}
+                  />
+                </div>
+                <div className="mt-2">
+                  <h2 className="text-black font-medium m-1">Budget Name</h2>
+                  <Input
+                    placeHolder="e.g. Car"
+                    defaultValue={budgetInfo?.name}
+                    type="text"
+                    pattern="[A-Za-z\s]"
+                    title="Only letters and spaces are allowed"
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
 
-                            </div>
-                        </DialogDescription>
-                    </DialogHeader>
-                    <DialogFooter className="sm:justify-start">
-                        <DialogClose asChild>
-                            <Button
-                                onClick={() => onUpdateBudget()}
-                                disabled={!(name && amount)}
-                                className="mt-5 w-full">Update Budget</Button>
-                        </DialogClose>
-                    </DialogFooter>
-                </DialogContent>
-            </Dialog>
-
-        </div>
-    )
+                <div className="mt-2">
+                  <h2 className="text-black font-medium m-1">Budget Amount</h2>
+                  <Input
+                    defaultValue={budgetInfo?.amount}
+                    type="number"
+                    placeHolder="e.g. 5000$"
+                    onChange={(e) => setAmount(e.target.value)}
+                  />
+                </div>
+              </div>
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="sm:justify-start">
+            <DialogClose asChild>
+              <Button
+                onClick={() => onUpdateBudget()}
+                disabled={!(name && amount)}
+                className="mt-5 w-full"
+              >
+                Update Budget
+              </Button>
+            </DialogClose>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
 }
 
-export default EditBudget
+export default EditBudget;

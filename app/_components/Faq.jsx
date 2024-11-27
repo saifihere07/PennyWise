@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown } from "lucide-react";
 
 const questions = [
   {
@@ -30,17 +30,14 @@ const questions = [
   {
     id: 5,
     question: "What if I do not have an account?",
-    answer:
-      "You can also sign-up if you do not have an account.",
+    answer: "You can also sign-up if you do not have an account.",
   },
   {
     id: 6,
     question: "Can I sign-in using my social media account?",
-    answer:
-      "Yes, you can sign-in using your Facebook account.",
+    answer: "Yes, you can sign-in using your Facebook account.",
   },
 ];
-
 
 const Faq = () => {
   const [activeQuestion, setActiveQuestion] = useState(null);
@@ -58,21 +55,22 @@ const Faq = () => {
                 className="flex w-full items-center justify-between p-4 text-left text-[30px] tracking-tight text-black border-t-[1px]  border-primary shadow-md backdrop-blur-sm focus:outline-none transition duration-300"
                 onClick={() =>
                   setActiveQuestion(
-                    activeQuestion === quest.id ? null : quest.id
+                    activeQuestion === quest.id ? null : quest.id,
                   )
                 }
               >
                 <span className=" text-[20px] flex justify-between items-center">
                   {quest.question}
-                  <div className="absolute right-5 "><ChevronDown/></div>
+                  <div className="absolute right-5 ">
+                    <ChevronDown />
+                  </div>
                 </span>
               </motion.button>
               {activeQuestion === quest.id && (
                 <motion.div
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }}     
-                transition={{duration:0.2}}
-                
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2 }}
                   className="mt-5 translate-x-2 text-left text-md leading-[30px] tracking-tighter text-description-col"
                 >
                   <p className="px-4 text-black">{quest.answer}</p>
@@ -82,29 +80,25 @@ const Faq = () => {
           ))}
         </div>
       </div>
-      
-         
-      
     </section>
   );
 };
 
 export default Faq;
 
-
 export const FadeUp = (delay) => {
-    return {
-        hidden:{
-            opacity: 0,
-            y: 100,
-        },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition :{
-                duration: 0.2,
-                delay: delay
-            },
-        },
-    };
+  return {
+    hidden: {
+      opacity: 0,
+      y: 100,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.2,
+        delay: delay,
+      },
+    },
+  };
 };

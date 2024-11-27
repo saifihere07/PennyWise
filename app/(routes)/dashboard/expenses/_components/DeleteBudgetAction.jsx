@@ -1,27 +1,21 @@
-
 import { eq } from "drizzle-orm";
 import { db } from "../../../../../utils";
-import { Budgets, Expenses } from '../../../../../utils/schema';
+import { Budgets, Expenses } from "../../../../../utils/schema";
 
-
-export const deleteBudget = async ({params})=>{
-    const deleteExpenseResult = await db.delete(Expenses)
+export const deleteBudget = async ({ params }) => {
+  const deleteExpenseResult = await db
+    .delete(Expenses)
     .where(eq(Expenses.budgetId, params.id))
-    .returning()
- 
+    .returning();
 
-if (deleteExpenseResult) {
-    const result = await db.delete(Budgets)
-        .where(eq(Budgets.id, params.id))
-        .returning();
-     
+  if (deleteExpenseResult) {
+    const result = await db
+      .delete(Budgets)
+      .where(eq(Budgets.id, params.id))
+      .returning();
 
-       
-        if (result){
-            return true;
-        }
-      
-}
-
-
-}
+    if (result) {
+      return true;
+    }
+  }
+};
