@@ -13,8 +13,6 @@ import {
 import EmojiPicker from "emoji-picker-react";
 import { Button } from "../../../../../components/ui/button";
 import { Input } from "../../../../../components/ui/input";
-import { db } from "../../../../../utils";
-import { Budgets } from "../../../../../utils/schema";
 import { useUser } from "@clerk/nextjs";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
@@ -48,7 +46,7 @@ function CreateBudget() {
     <div>
       <Dialog>
         <DialogTrigger asChild>
-          <div className="bg-slate-100 rounded-md p-10 items-center flex flex-col border-2 cursor-pointer hover:shadow-md">
+          <div className="flex1 mt-5 w-full  cursor-pointer  h-[170px] bg-white rounded-2xl shadow-2xl flex flex-col items-center p-10">
             <h2 className="text-3xl">+</h2>
             <h2>Create New Budget</h2>
           </div>

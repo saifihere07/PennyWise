@@ -1,6 +1,6 @@
 import { config } from "dotenv";
 
-config({ path: ".env.local" });
+config({ path: ".env" });
 export default {
   schema: "./utils/schema.js",
   dialect: "postgresql",

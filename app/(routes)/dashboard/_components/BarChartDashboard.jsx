@@ -2,50 +2,60 @@
 
 import React from "react";
 import {
-  Bar,
-  BarChart,
-  Legend,
-  ResponsiveContainer,
-  Tooltip,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
 } from "recharts";
 
-function BarChartDashboard({ budgetList }) {
+function LineChartDashboard({ budgetList }) {
   return (
-    <div className="border p-5 rounded-lg shadow-md">
-      <h2 className="font-bold text-lg">Activity</h2>
+    <div>
       {budgetList.length > 0 ? (
-        <ResponsiveContainer width={"80%"} height={300}>
-          <BarChart
-            className="z-[999]"
-            width={500}
-            height={300}
+        <ResponsiveContainer width="80%" height={400}>
+          <LineChart
             data={budgetList}
             margin={{
-              top: 7,
+              top: 20,
+              right: 30,
+              left: 20,
+              bottom: 5,
             }}
           >
+            <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="totalSpend" stackId="a" fill="#4845d2" />
-            <Bar dataKey="amount" stackId="a" fill="#C3C2FF" />
-          </BarChart>
+
+            {/* Line for Total Spend */}
+            <Line
+              type="monotone"
+              dataKey="totalSpend"
+              stroke="#5B25B4"
+              activeDot={{ r: 8 }}
+            />
+
+            {/* Line for Amount */}
+            <Line
+              type="monotone"
+              dataKey="amount"
+              stroke="#C3C2FF"
+              activeDot={{ r: 8 }}
+            />
+          </LineChart>
         </ResponsiveContainer>
       ) : (
-        <div className="flex flex-row gap-8 ml-5">
-          <div className="h-[250px] w-[600px] mt-2 bg-slate-200 rounded-md  grid grid-cols-4 gap-2 items-end">
-            <div className="h-[230px] w-[80px] max-sm:w-[40px] bg-slate-300  self-end ml-9 "></div>
-            <div className="h-[130px] w-[80px] max-sm:w-[40px] bg-slate-300  self-end ml-9"></div>
-            <div className="h-[170px] w-[80px] max-sm:w-[40px] bg-slate-300  self-end ml-9"></div>
-            <div className="h-[200px] w-[80px] max-sm:w-[40px] bg-slate-300  self-end ml-9 max-sm:hidden md:hidden "></div>
-          </div>
+        <div className="flex justify-center items-center h-[400px] bg-gray-100 italic text-[#32383F] rounded-md">
+          <p>No data available</p>
         </div>
       )}
     </div>
   );
 }
 
-export default BarChartDashboard;
+export default LineChartDashboard;

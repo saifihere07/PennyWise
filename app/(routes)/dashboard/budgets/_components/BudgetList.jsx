@@ -22,7 +22,7 @@ async function BudgetList() {
     .orderBy(desc(Budgets.id));
 
   return (
-    <div className="mt-7">
+    <div className="mt-5">
       <div className="grid grid-cols-1 md:grid-cols-1  lg:grid-cols-3 gap-5">
         <CreateBudget />
         {budgetList.map((budget, index) => (

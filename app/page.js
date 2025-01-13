@@ -1,13 +1,14 @@
-import Header from "./_components/Header";
-import Hero from "./_components/Hero";
-import Footer from "./_components/Footer";
+import Navbar from "./_components/Navbar";
+import Hero2 from "./_components/Hero2";
+
+import Footer2 from "./_components/Footer2";
 
 export default function Home() {
   return (
-    <div>
-      <Header />
-      <Hero />
-      <Footer />
+    <div className="bg-white">
+      <Navbar />
+      <Hero2 />
+      <Footer2 />
     </div>
   );
 }

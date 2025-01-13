@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link";
+
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 const SideMenuBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,7 @@ const SideMenuBar = () => {
     <div className="z-[1000]">
       {/* Menu Icon (Hamburger or Close) */}
       <div
-        className="  top-4 left-4 z-10 text-2xl cursor-pointer lg:hidden"
+        className="top-4 -mt-12  z-10 text-2xl cursor-pointer lg:hidden"
         onClick={toggleSidebar}
       >
         {isOpen ? <X /> : <Menu />}{" "}
@@ -35,36 +36,42 @@ const SideMenuBar = () => {
         } lg:translate-x-0 lg:static lg:bg-transparent lg:text-black lg:p-0 lg:flex lg:flex-row lg:justify-around lg:h-auto`}
       >
         {/* Sidebar Links */}
-        <div className="space-y-4 z-[1000] lg:space-y-0 lg:flex lg:space-x-8 mt-10">
+        <div className="space-y-4 z-[1000] lg:space-y-0 lg:hidden lg:space-x-8 mt-10">
+          <li>
+            <Link className="text-[18px] font-[500] leading-6" href="#home">
+              Home
+            </Link>
+          </li>
           <Link
-            href="/"
+            href="#about"
             className="block py-2 px-4 rounded hover:bg-gray-700 lg:hover:bg-transparent"
           >
-            Home
+            About Us
           </Link>
           <Link
-            href="/dashboard"
+            href="#servces"
             className="block py-2 px-4 rounded hover:bg-gray-700 lg:hover:bg-transparent"
           >
-            Dashboard
+            Services
+          </Link>
+
+          <Link
+            href="#blog"
+            className="block py-2 px-4 rounded hover:bg-gray-700 lg:hover:bg-transparent"
+          >
+            Blog
           </Link>
           <Link
-            href="/dashboard/budgets"
+            href="#footer"
             className="block py-2 px-4 rounded hover:bg-gray-700 lg:hover:bg-transparent"
           >
-            Budgets
+            Footer
           </Link>
           <Link
-            href="/dashboard/expenses"
+            href="#page"
             className="block py-2 px-4 rounded hover:bg-gray-700 lg:hover:bg-transparent"
           >
-            Expenses
-          </Link>
-          <Link
-            href="/dashboard/upgrade"
-            className="block py-2 px-4 rounded hover:bg-gray-700 lg:hover:bg-transparent"
-          >
-            Upgrade
+            Why Chose us
           </Link>
         </div>
       </div>

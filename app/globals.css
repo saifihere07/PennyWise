@@ -86,3 +86,42 @@ body {
   font-family: "Outfit", sans-serif !important;
   background-color: #f9fafb;
 }
+
+/* src/index.css or src/styles.css */
+
+html {
+  scroll-behavior: smooth;
+  animation: ease-in-out;
+}
+
+/* Add custom font */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+/* Apply the custom font globally */
+body {
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  background-color: rgb(232, 227, 227);
+  overflow-x: hidden;
+}
+.poppins {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.background {
+  background: linear-gradient(to right, #5b25b4, #a773ff);
+}
+.borderr {
+  border: linear-gradient(to right, #5b25b4, #a773ff);
+}
+.dark {
+  background-color: #1a202c;
+  color: white;
+}
+
+.textt {
+  background: linear-gradient(45deg, #45198d, #45198d);
+  -webkit-background-clip: text;
+  color: transparent;
+}

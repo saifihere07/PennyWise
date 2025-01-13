@@ -1,16 +1,12 @@
-import Sidebar from "./_components/Sidebar";
-import DashboardHeader from "./_components/DashboardHeader";
+import DashboardSidebar from "./_components/DashboardSidebar";
 
 function DashboardLayout({ children }) {
   return (
     <div>
-      <div className="fixed hidden md:w-64 md:block ">
-        <Sidebar />
+      <div className="fixed ">
+        <DashboardSidebar />
       </div>
-      <div className="md:ml-64">
-        <DashboardHeader />
-        {children}
-      </div>
+      <div className="lg:ml-[200px]">{children}</div>
     </div>
   );
 }

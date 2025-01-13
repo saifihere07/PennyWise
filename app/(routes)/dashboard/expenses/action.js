@@ -20,32 +20,33 @@ export const deleteExpense = async (expense) => {
 };
 
 export const createExpense = async ({ name, amount, budgetId, userId }) => {
-  const result = await db.insert(Expenses)
-      .values({
-          name: name,
-          amount: amount,
-          budgetId: budgetId,
-          user_id: userId,
-          createdAt: moment().format("DD/MM/YYYY"),
-      })
-      .returning({ insertedId: Budgets.id });
-
-  return result
-}
-
-export const updateBudget = async({name,amount,budgetId,emojiIcon})=>{
   const result = await db
-  .update(Budgets)
-  .set({
-    name: name,
-    amount: amount,
-    icon: emojiIcon,
-  })
-  .where(eq(Budgets.id, budgetId))
-  .returning();
+    .insert(Expenses)
+    .values({
+      name: name,
+      amount: amount,
+      budgetId: budgetId,
+      user_id: userId,
+      createdAt: moment().format("DD/MM/YYYY"),
+    })
+    .returning({ insertedId: Budgets.id });
 
-  return result
-}
+  return result;
+};
+
+export const updateBudget = async ({ name, amount, budgetId, emojiIcon }) => {
+  const result = await db
+    .update(Budgets)
+    .set({
+      name: name,
+      amount: amount,
+      icon: emojiIcon,
+    })
+    .where(eq(Budgets.id, budgetId))
+    .returning();
+
+  return result;
+};
 
 export const deleteBudget = async ({ params }) => {
   const deleteExpenseResult = await db

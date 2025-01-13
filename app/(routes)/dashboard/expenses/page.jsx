@@ -3,6 +3,8 @@ import { db } from "../../../../utils/index";
 import { Budgets, Expenses } from "../../../../utils/schema";
 import { desc, eq } from "drizzle-orm";
 import { auth } from "@clerk/nextjs/server";
+import ExpenseItem from "../_components/ExpenseItem";
+import { UserButton } from "@clerk/nextjs";
 
 async function ExpensesList() {
   const { userId } = await auth();
@@ -20,20 +22,29 @@ async function ExpensesList() {
     .orderBy(desc(Expenses.id));
 
   return (
-    <div className="p-10">
-      <h1 className=" text-3xl font-extrabold "> My Expenses</h1>
-      <div className="-mt-5">
-        {expensesList?.length > 0 ? (
-          <ExpensesListTable expensesList={expensesList} />
+    <section className="p-10">
+      <div className="flex flex-row justify-between mb-6 px-12">
+        <h1 className=" text-3xl font-extrabold text-[#32383F] "> Expenses</h1>
+        {/* <UserButton showName className="hidden md:ml-1" /> */}
+      </div>
+      <div className="containers max-sm:-ml-7">
+        {expensesList.length > 0 ? (
+          expensesList.map((expense, index) => {
+            return (
+              <ExpenseItem
+                key={index}
+                expense={expense}
+                expensesList={expensesList}
+              />
+            );
+          })
         ) : (
-          <div className="h-[110px] w-[500px] max-sm:w-[300px] md:[200px] mt-10 border-[3px] rounded-2xl ml-2">
-            <h1 className="text-xl p-10 max-sm:p-5">
-              Please add an Expense to see it here!
-            </h1>
-          </div>
+          <p className="mt-3 ml-10 italic text-[#32383F]">
+            Please add an Expense to see it here!
+          </p>
         )}
       </div>
-    </div>
+    </section>
   );
 }
 

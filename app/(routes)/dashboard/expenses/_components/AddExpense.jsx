@@ -23,13 +23,20 @@ function AddExpense({ budgetId, user, budgetInfo }) {
 
     if (amount > budgetInfo[0]?.amount - budgetInfo[0]?.totalSpend) {
       toast.error(
-        `Please add an expense smaller than: ${budgetInfo[0]?.amount - budgetInfo[0]?.totalSpend}`,
+        `Please add an expense smaller than: ${
+          budgetInfo[0]?.amount - budgetInfo[0]?.totalSpend
+        }`
       );
       return;
     }
 
     try {
-      const result = await createExpense({name:name,amount:amount,budgetId:budgetId,userId:user?.userId})
+      const result = await createExpense({
+        name: name,
+        amount: amount,
+        budgetId: budgetId,
+        userId: user?.userId,
+      });
       if (result) {
         router.refresh();
         toast("Expense Added!");
@@ -44,7 +51,7 @@ function AddExpense({ budgetId, user, budgetInfo }) {
   return (
     <form
       onSubmit={handleSubmit(AddNewExpense)}
-      className="border p-5 rounded-lg lg:ml-2 "
+      className="bg-white border p-4 rounded-lg lg:ml-2 "
     >
       <h2 className="font-bold text-lg">Add Expense</h2>
 
