@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { fadeLeft } from "./Animation";
 import Image from "next/image";
+import Link from "next/link";
 
 const About = () => {
   return (
@@ -26,12 +27,12 @@ const About = () => {
           >
             <p className="text-[#ACACAC] text-[16px] poppins leading-9 max-lg:text-center">
               <span className="text-[#555555] underline">
-                Designed for individuals looking to take control of their
-                financial destiny this guide
+                Designed for individuals looking for streamline financial
+                planning,
               </span>
-              <br /> provides step-by-step instructions on budgeting, saving
-              investing and retirement <br /> planning. It emphasizes practical
-              approaches to achieving financial
+              <br /> this platform offers tools for naming and managing budgets,
+              tracking expenses, <br /> and viewing a summary of financial
+              details in one place.
             </p>
           </motion.div>
           <motion.div
@@ -41,9 +42,11 @@ const About = () => {
             viewport={{ once: true }}
             className="max-lg:flex max-lg:justify-center"
           >
-            <button className="text-white w-[139px] h-[60px] mt-10 rounded-[26px] bg-[#45198D] hover:bg-[#8364b5] duration-300">
-              Discover
-            </button>
+            <Link href="/dashboard">
+              <button className="text-white w-[139px] h-[60px] mt-10 rounded-[26px] bg-[#45198D] hover:bg-[#8364b5] duration-300">
+                Discover
+              </button>
+            </Link>
           </motion.div>
           <div className="about -ml-40 mt-20 max-2xl:-ml-20 max-xl:ml-0">
             <motion.div
@@ -72,8 +75,8 @@ const About = () => {
               className="text max-lg:text-center"
             >
               <span className="text-[#000000] text-[70px] max-sm:text-[40px] max-2xl:text-[50px] font-[300]">
-                Finance <span className="textt font-[600]">Mastery</span> Advan
-                Strategies Business
+                Finance <span className="textt font-[600]">Mastery</span>{" "}
+                Advanced Strategies for Budgeting
               </span>
             </motion.div>
             <motion.div
@@ -102,8 +105,8 @@ const About = () => {
                     Wealth Management
                   </p>
                   <p className="text-[16px] text-[#555555] poppins leading-9 pt-4">
-                    We explore if evolution of job board <br /> and the
-                    recruitment process
+                    We explore how personal budgeting <br /> and expense
+                    tracking can transform financial management.
                   </p>
                 </div>
               </div>
@@ -124,11 +127,11 @@ const About = () => {
 
                 <div className="text max-sm:text-[13px]">
                   <p className="text-[24px] text-[#000000] leading-7 pt-4">
-                    Wealth Management
+                    Financial Insights
                   </p>
                   <p className="text-[16px] text-[#555555] poppins leading-9 pt-4">
-                    We explore if evolution of job board <br /> and the
-                    recruitment process
+                    We explore how personal budgeting <br /> and expense
+                    tracking can transform financial management.
                   </p>
                 </div>
               </div>

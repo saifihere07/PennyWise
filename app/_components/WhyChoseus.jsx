@@ -36,8 +36,7 @@ const WhyChoseus = () => {
               className="text-[#000000] text-s text-[60px] max-lg:text-center max-lg:text-[40px] max-lg:leading-[51px] leading-[70px] font-[400] pt-4"
             >
               Unlocking <span className="textt font-[700]">Financial</span>{" "}
-              <br /> Success{" "}
-              <span className="textt font-[700]">Management</span>
+              <br /> Clarity{" "}
             </motion.h1>
             <motion.p
               variants={fadeLeft(0.2)}
@@ -47,13 +46,13 @@ const WhyChoseus = () => {
               className="text-[#555555] text-[16px] poppins max-lg:text-center max-lg:pt-8"
             >
               <span className="text-[#000000] text-[16px] leading-9">
-                This book delves into the intricacies of wealth management,
-                offering
+                This Platform delves into the intricacies of wealth management
               </span>
-              <br /> readers comprehensive strategies to grow and protect thei
-              assets It <br /> covers topics ranging from investment
-              diversification to tax <br /> optimization tailored for the
-              contemporary
+              <br /> PennyWise empowers users with tools for effective
+              <br />
+              financial management, offering features that simplify expense
+              <br /> tracking and provide insights through visual data
+              representation.
             </motion.p>
           </div>
         </div>
@@ -68,7 +67,7 @@ const WhyChoseus = () => {
           className="1flexbox shadow-2xl w-[470px] max-md:w-[300px] h-[504px] rounded-[35px] bg-[#D7EBFF]"
         >
           <p className="text-[25px] poppins text-[#000000] underline pt-10 text-center">
-            Tax Planning and Optimization
+            Personalized Dashboard
           </p>
           <Image
             src="/friendship.jpg"
@@ -86,12 +85,11 @@ const WhyChoseus = () => {
           className="2flexbox shadow-2xl rounded-[35px] w-[470px] max-md:w-[300px] h-[375px] bg-[#D7EBFF] mt-32"
         >
           <p className="text-[25px] poppins text-[#000000] underline underline-offset-[7px] pt-16 text-center">
-            Tax Planning and Optimization
+            Graphical Analysis and Insights
           </p>
           <p className="text-[16px] poppins leading-9 text-center text-[#555555] pt-10">
-            Offer comprehensive tax planning services both individuals and
-            businesses, helping cli minimize tax liabilities and maximize after
-            tax
+            Offer users a comprehensive dashboard to visualize financial data
+            and gain meaningful insights to make informed decisions.
           </p>
           <div className="flex justify-around mt-16">
             <span className="w-[48px] h-0 border-4  border-[#45198D] rounded-xl"></span>

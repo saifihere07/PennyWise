@@ -43,6 +43,12 @@ const SideMenuBar = () => {
             </Link>
           </li>
           <Link
+            href="/dashboard"
+            className="block py-2 px-4 rounded hover:bg-gray-700 lg:hover:bg-transparent"
+          >
+            Dashboard
+          </Link>
+          <Link
             href="#about"
             className="block py-2 px-4 rounded hover:bg-gray-700 lg:hover:bg-transparent"
           >
@@ -60,12 +66,6 @@ const SideMenuBar = () => {
             className="block py-2 px-4 rounded hover:bg-gray-700 lg:hover:bg-transparent"
           >
             Blog
-          </Link>
-          <Link
-            href="#footer"
-            className="block py-2 px-4 rounded hover:bg-gray-700 lg:hover:bg-transparent"
-          >
-            Footer
           </Link>
           <Link
             href="#page"

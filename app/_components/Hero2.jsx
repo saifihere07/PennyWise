@@ -70,12 +70,12 @@ const Hero = () => {
                   />
                 </svg>
                 <p className="text-[24px] text-[#000000] leading-7">
-                  Corporate Finance <br /> Consulting
+                  Expense Tracking
                 </p>
               </div>
-              <p className="text-[16px] text-[#555555] poppins text-center pt-5">
-                We explore the evolution of job board and the <br /> recruitment
-                process
+              <p className="text-[16px] text-[#555555] poppins text-center pt-3">
+                We explore how personal budgeting and expense tracking can
+                transform financial management.
               </p>
             </motion.div>
           </div>
@@ -118,10 +118,10 @@ const Hero = () => {
                 viewport={{ once: true }}
                 className="text-[98px] text-[#000000] shadow-sm leading-[120px] max-xl:text-[50px] max-lg:text-center max-xl:leading-[80px] font-[400] pt-20"
               >
-                Building <br /> a
-                <span className="textt font-[600] pl-1">Financial</span>
+                Shaping <br /> a
+                <span className="textt font-[600] pl-1"> Bright </span>
                 <br />
-                Future
+                Tomorrow
               </motion.h1>
               <motion.p
                 variants={fadeLeft(0.4)}
@@ -130,9 +130,10 @@ const Hero = () => {
                 viewport={{ once: true }}
                 className="text-[16px] poppins text-[#555555] max-lg:text-center"
               >
-                In this article, we explore the evolution of job boards and thei
-                recruitment process. From the traditional job listings to AI
-                driven matchmaking discover how these platforms are streamlining
+                Today, we will delve into the features of PennyWise. From
+                personalized dashboards to intuitive budget and expense
+                tracking, discover how the platform simplifies financial
+                planning.
               </motion.p>
             </div>
           </div>
@@ -147,11 +148,12 @@ const Hero = () => {
             className="text max-lg:text-center max-lg:mb-10"
           >
             <p className="text-[#262F2E] underline text-[16px] poppins">
-              Designed for individual control of the financial destin this
+              Designed for individuals to take charge of their financial
+              journey,
             </p>
             <span className="text-[#555555]">
-              step by step instructions on budgeting, saving, investing <br />{" "}
-              and retirement planning
+              this platform provides tools for creating budgets, tracking
+              expenses, and gaining insights through graphical analysis.
             </span>
           </motion.div>
           <motion.div
@@ -208,10 +210,11 @@ const Hero = () => {
                   fill="#5B25B4"
                 />
               </svg>
-              <p className="text-[24px] text-[#000000]">Corporate Finance </p>
+              <p className="text-[24px] text-[#000000]">Expense Management</p>
             </div>
             <p className="text-[#555555] text-[16px] text-center poppins pt-4">
-              We explore the evolution of job board and the recruitment process
+              Discover how budgeting and expense tracking simplify financial
+              management.
             </p>
           </motion.div>
         </div>

@@ -21,17 +21,17 @@ export default function Advice({ totalBudget, totalSpend }) {
 
   return (
     <div className="flex flex-col">
-      <h1 className="text-[#32383F] text-[32px] font-[700] leading-10">
-        Finca AI
+      <h1 className="text-[#32383F] text-4xl font-[700] leading-10">
+        Dashboard
       </h1>
-      <div className="h-[70px] p-3 mt-3 rounded-xl w-full">
+      {/* <div className="h-[70px] p-3 mt-3 rounded-xl w-full">
         <p className="italic text-[#32383F]">
           A well-planned budget is the foundation for managing expenses
           effectively and achieving financial goals.Tracking expenses regularly
           helps identify areas to save and ensures financial stability over
           time.
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }

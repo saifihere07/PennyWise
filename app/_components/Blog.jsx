@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeLeft, faderight, FadeUp } from "./Animation";
 import Image from "next/image";
+import Link from "next/link";
 const Blog = () => {
   return (
     <div className="px-[130px] py-[150px] w-full h-full max-lg:px-5" id="blog">
@@ -20,7 +21,7 @@ const Blog = () => {
         >
           <circle cx="10" cy="10" r="10" fill="#5B25B4" />
         </svg>
-        <h1 className="text-[20px] text-[#5B25B4] underline">Services</h1>
+        <h1 className="text-[20px] text-[#5B25B4] underline">Blogs</h1>
       </motion.div>
       <div className="row1 flex max-lg:flex-col justify-between">
         <motion.div
@@ -31,11 +32,11 @@ const Blog = () => {
           className="colm1 max-lg:text-center max-md:pt-10"
         >
           <span className="text-[#000000] max-md:text-[35px] max-md:leading-[50px] text-[60px] max-2xl:text-[40px] font-[300] leading-[70px]">
-            Global Markets
-            <span className="textt font-[600]">
-              Unveiled <br /> Complexities
+            Unveiling the
+            <span className=" px-1 textt font-[600]">
+              Complexities <br /> of Global
             </span>
-            Inter
+            Markets
           </span>
         </motion.div>
         <motion.div
@@ -53,9 +54,11 @@ const Blog = () => {
             <br /> provides step-by-step instructions on budgeting
           </p>
           <div className="max-lg:flex max-lg:justify-center">
-            <button className="text-white w-[139px] h-[60px] mt-8 rounded-[26px] bg-[#45198D] hover:bg-[#45198D] duration-300">
-              Discover
-            </button>
+            <Link href="/dashboard">
+              <button className="text-white w-[139px] h-[60px] mt-8 rounded-[26px] bg-[#45198D] hover:bg-[#45198D] duration-300">
+                Discover
+              </button>
+            </Link>
           </div>
         </motion.div>
       </div>
@@ -82,16 +85,16 @@ const Blog = () => {
               </div>
               <div className="text2 flex gap-[20px]">
                 <div className="w-[15px] h-[15px] rounded-full bg-[#000000]"></div>
-                <span className="text-[16px] text-[#000000]">12 Agt 2024</span>
+                <span className="text-[16px] text-[#000000]">12 Aug 2024</span>
               </div>
             </div>
             <div className="pargraph">
               <p className="text-[24px] text-[#000000] text-center pt-10 leading-7">
-                The Import Financial Planning for Long Term Success
+                The Value of Budgeting
               </p>
               <p className="text-[16px] poppins text-[#555555] leading-9 text-center pt-7">
-                Ensure clients have a clear plat maintain their desired
-                lifestyle post-retirement
+                Ensure users have a clear platform to plan and track their
+                budgets effectively.
               </p>
             </div>
           </div>
@@ -118,16 +121,16 @@ const Blog = () => {
               </div>
               <div className="text2 flex gap-[20px]">
                 <div className="w-[15px] h-[15px] rounded-full bg-[#000000]"></div>
-                <span className="text-[16px] text-[#000000]">12 Agt 2024</span>
+                <span className="text-[16px] text-[#000000]">25 Aug 2024</span>
               </div>
             </div>
             <div className="pargraph">
               <p className="text-[24px] text-[#000000] text-center pt-10 leading-7">
-                The Import Financial Planning for Long Term Success
+                Smart Expense Tracking
               </p>
               <p className="text-[16px] poppins text-[#555555] leading-9 text-center pt-7">
-                Ensure clients have a clear plat maintain their desired
-                lifestyle post-retirement
+                Empower users to organize their finances efficiently, set clear
+                goals, and monitor their progress toward financial stability.
               </p>
             </div>
           </div>
@@ -154,16 +157,16 @@ const Blog = () => {
               </div>
               <div className="text2 flex gap-[20px]">
                 <div className="w-[15px] h-[15px] rounded-full bg-[#000000]"></div>
-                <span className="text-[16px] text-[#000000]">12 Agt 2024</span>
+                <span className="text-[16px] text-[#000000]">18 Aug 2024</span>
               </div>
             </div>
             <div className="pargraph">
               <p className="text-[24px] text-[#000000] text-center pt-10 leading-7">
-                The Import Financial Planning for Long Term Success
+                Budgeting for Success
               </p>
               <p className="text-[16px] poppins text-[#555555] leading-9 text-center pt-7">
-                Ensure clients have a clear plat maintain their desired
-                lifestyle post-retirement
+                Provide users with intuitive tools to monitor spending habits
+                and make informed choices for long-term financial growth.
               </p>
             </div>
           </div>

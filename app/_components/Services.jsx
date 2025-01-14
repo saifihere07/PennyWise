@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { fadeLeft, faderight } from "./Animation";
 import Image from "next/image";
+import Link from "next/link";
 
 const Services = () => {
   return (
@@ -37,9 +38,9 @@ const Services = () => {
             className="text pt-28 max-lg:text-center max-md:pt-5"
           >
             <span className="text-[#000000] text-[55px] max-sm:text-[38px] leading-[70px] font-[300]">
-              Global Markets
-              <span className="textt font-[600]">Unveiled Complexities</span>
-              Inter
+              Unified
+              <span className="textt font-[600]"> Financial </span>
+              Dashboard
             </span>
           </motion.div>
           <motion.div
@@ -50,8 +51,10 @@ const Services = () => {
             className="paragraph pt-16"
           >
             <p className="text-[16px] text-[#555555] poppins max-lg:text-center">
-              This book explores the role of financial leader steering companies
-              through <br /> economic challenges. It offers practical advice
+              This platform allows users to visualize all their financial
+              details in one place,
+              <br /> including budgets, expenses, and graphs that simplify
+              financial analysis.
             </p>
           </motion.div>
           <div className="content">
@@ -66,12 +69,12 @@ const Services = () => {
                 234+
               </span>
               <p className="text-[#000000] text-[18px] leading-7 max-lg:text-center">
-                Wealth Management and Investment Advisory
+                Personalized Budgeting and Expense Management
               </p>
               <p className="text-[#555555] text-[16px] poppins pt-5 max-lg:text-center">
-                This book explores the role of financial leader steering
-                companies through <br /> economic challenges. It offers
-                practical advice
+                This platform allows users to visualize all their financial
+                details in one place, <br /> including budgets, expenses, and
+                graphs that simplify financial analysis.
               </p>
             </motion.div>
             <motion.div
@@ -85,12 +88,12 @@ const Services = () => {
                 66+
               </span>
               <p className="text-[#000000] text-[18px] leading-7 max-lg:text-center">
-                Debt Management and Credit Counseling
+                Total Budgets and Expense Categories
               </p>
               <p className="text-[#555555] text-[16px] poppins pt-5 max-lg:text-center">
-                This book explores the role of financial leader steering
-                companies through <br /> economic challenges. It offers
-                practical advice
+                This platform allows users to visualize all their financial
+                details in one place, <br /> including budgets, expenses, and
+                graphs that simplify financial analysis.
               </p>
             </motion.div>
             <motion.div
@@ -100,9 +103,11 @@ const Services = () => {
               viewport={{ once: true }}
               className="max-lg:flex max-lg:mb-5 max-lg:justify-center"
             >
-              <button className="text-white w-[139px] h-[60px] mt-10 rounded-[26px] bg-[#45198D] hover:bg-[#74599f] duration-300">
-                Discover
-              </button>
+              <Link href="/dashboard">
+                <button className="text-white w-[139px] h-[60px] mt-10 rounded-[26px] bg-[#45198D] hover:bg-[#74599f] duration-300">
+                  Discover
+                </button>
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -137,12 +142,12 @@ const Services = () => {
                 />
               </svg>
               <p className="text-[24px] text-[#000000]">
-                Assist clients in planning
+                Assist in managing finances
               </p>
             </div>
             <p className="text-[#555555] text-[16px] text-center poppins pt-4">
-              Ensure clients have a clear plat maintain their desired lifestyle
-              post-retirement
+              Ensure users have a clear platform to plan and track their budgets
+              effectively.
             </p>
           </motion.div>
           <motion.div
@@ -169,8 +174,8 @@ const Services = () => {
               <p className="text-[24px] text-[#000000]">Financial Education</p>
             </div>
             <p className="text-[#555555] text-[16px] text-center poppins pt-4">
-              Ensure clients have a clear plat maintain their desired lifestyle
-              post-retirement
+              Ensure users have a clear platform to plan and track their budgets
+              effectively.
             </p>
           </motion.div>
           <motion.div
@@ -194,11 +199,11 @@ const Services = () => {
                 />
               </svg>
 
-              <p className="text-[24px] text-[#000000]">Insurance Planning</p>
+              <p className="text-[24px] text-[#000000]">Graphical Insights</p>
             </div>
             <p className="text-[#555555] text-[16px] text-center poppins pt-4">
-              Ensure clients have a clear plat maintain their desired lifestyle
-              post-retirement
+              Ensure users have a clear platform to plan and track their budgets
+              effectively.
             </p>
           </motion.div>
         </div>
