@@ -110,7 +110,7 @@ export default function DashboardSidebar() {
               className="-mt-1"
               width={30}
               height={30}
-              src="/logo.png"
+              src="/Logo.png"
               alt="logo"
             />
             <h1 className="text-[#5B25B4] text-[20px] font-[600] leading-[38.5px] ml-2">
