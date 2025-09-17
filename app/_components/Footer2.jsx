@@ -20,7 +20,7 @@ const Footer2 = () => {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <Image src="/Logo.png " width={50} height={50} alt="logo" />
+              {/* <Image src="/Logo.png " width={50} height={50} alt="logo" /> */}
             </motion.div>
             <motion.h1
               variants={FadeUp(0.2)}
