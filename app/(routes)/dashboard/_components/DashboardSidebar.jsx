@@ -103,7 +103,7 @@ export default function DashboardSidebar() {
       <div className="mt-2">
         <DashboardNavbar />
       </div>
-      <div className="row1 w-[200px] h-[90vh] ml-5 mt-7 max-lg:w-full p-7 max-lg:hidden shadow-2xl rounded-xl bg-[#FFFFFF]">
+      <div className="row1 w-[220px] h-[90vh] ml-5 mt-7 max-lg:w-full p-7 max-lg:hidden shadow-2xl rounded-xl bg-[#FFFFFF]">
         <Link href="/">
           <div className="logotext flex items-center cursor-pointer">
             <Image
@@ -123,7 +123,7 @@ export default function DashboardSidebar() {
             return (
               <Link href={menu.path} key={index}>
                 <h2
-                  className={`svgtext1 flex gap-4 hover:bg-[#EBE3E3] items-center rounded-3xl p-3 mt-10 border hover:scale-110 cursor-pointer duration-500 text-[#5B25B4] text-[18px] font-[600] ${
+                  className={`svgtext1 flex gap-3 hover:bg-[#EBE3E3] items-center rounded-3xl p-3 mt-10 border hover:scale-110 cursor-pointer duration-500 text-[#5B25B4] text-[15px] font-[600] ${
                     path === menu.path && "text-primary bg-[#E8E3E3]"
                   }`}
                   key={index}
