@@ -103,14 +103,14 @@ export default function DashboardSidebar() {
       <div className="mt-2">
         <DashboardNavbar />
       </div>
-      <div className="row1 w-[220px] h-[90vh] ml-5 mt-7 max-lg:w-full p-7 max-lg:hidden shadow-2xl rounded-xl bg-[#FFFFFF]">
+      <div className="row1 w-[210px] h-[90vh] ml-5 mt-7 max-lg:w-full p-7 max-lg:hidden shadow-2xl rounded-xl bg-[#FFFFFF]">
         <Link href="/">
           <div className="logotext flex items-center cursor-pointer">
             <Image
               className="-mt-1"
               width={30}
               height={30}
-              src="/Logo.png"
+              src="/logo.png"
               alt="logo"
             />
             <h1 className="text-[#5B25B4] text-[20px] font-[600] leading-[38.5px] ml-2">
